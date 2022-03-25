@@ -391,5 +391,55 @@ public class Solution {
 }
 
 
+Given an array of integers, replace every element with the greatest element on the right side in the array. Replace last element with 0 as there no element on the right side of it.
+
+Input Format
+
+First line contains N , the number of Numbers. Next line contains N integers a[1]..a[n] the numbers
+
+Constraints
+
+1<= N <= 10^5
+1<= ai <= 10^5
+
+Output Format
+
+Print the array required
+
+Sample Input 0
 
 
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] a=new int[n];
+        int[] b=new int[n];
+        for(int i=0;i<n;i++){
+            a[i] = sc.nextInt();   
+        }
+        int max=a[n-1];
+        b[n-1]=0;
+        b[n-2]=max;
+        for(int i=2;i<n;i++){
+            if(a[n-i]>max){
+                max=a[n-i];
+                b[n-i-1]=max;
+            }
+            else{
+                b[n-i-1]=max;
+            }
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(b[i]+" ");
+        }
+    }
+}
