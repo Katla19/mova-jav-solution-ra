@@ -575,3 +575,74 @@ public class Solution{
       teen.reasonlessRebel();
    }
 }
+
+
+
+
+
+
+
+OO 02 - Basics of Inheritance - II
+Problem
+Submissions
+Write the code for the following in the editor below :
+
+A class named Arithmetic with a method named multiply that takes as parameters two integers and returns their product.
+A class named Multiplier that inherits from the superclass named Arithmetic.
+Your classes should be public.
+
+Input Format
+
+You are not responsible for reading any input from stdin; a code stub will test your submission by calling the multiply method on a Multiplier object and passing it 2 integer parameters.
+
+You only need to write the code for the Arithmetic class and the Multiplier class
+
+Output Format
+
+You are not responsible for printing anything to stdout. Your multiply method must return the product of its parameters.
+
+Sample Output :
+The main method in the Solution class above should print the following:
+
+My superclass is: Arithmetic
+50 100 200
+
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+//BODY BEGINS HERE
+class Arithmetic{
+    public int multiply(int a,int b){
+        return(a*b);
+    }
+}
+class Multiplier extends Arithmetic{
+    public int demultiply(int a,int b){
+        return(multiply(a,b));
+    
+    }
+}
+
+
+
+//BODY ENDS HERE
+
+public class Solution{
+    public static void main(String []args){
+        // Create a new Multiplier object
+        Multiplier a = new Multiplier();
+        
+        // Print the name of the superclass on a new line
+        System.out.println("My superclass is: " + a.getClass().getSuperclass().getName());	
+        
+        // Print the result of 3 calls to Multiplier's `multiply(int,int)` method as 3 space-separated integers:
+        System.out.print(a.multiply(5,10) + " " + a.multiply(10,10) + " " + a.multiply(20,10) + "\n");
+     }
+}
