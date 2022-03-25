@@ -646,3 +646,82 @@ public class Solution{
         System.out.print(a.multiply(5,10) + " " + a.multiply(10,10) + " " + a.multiply(20,10) + "\n");
      }
 }
+
+
+
+
+
+In Java an abstract class is a class that may or may not have abstract functions.
+
+Abstract classes cannot be initiated directly because they may contain functions that lack implementation.
+
+Similarly, abstract functions are those functions that do not have an implementation.
+
+To initiate abstract classes, one must inherit them to another class and write the implementations for the abstract functions in order to use them.
+
+In the current problem you are given an abstract class as follows :
+
+abstract class Arithmetic
+{
+    abstract int add(int, int);
+    abstract int subtract(int, int);
+    abstract int divide(int, int);
+    abstract int multiply(int, int);
+}
+Your task is to write a new class called Calculator that inherits the class Arithmetic and implement all its functions.
+
+NOTE:
+You are only allowed to edit the body of the code.
+
+Input Format
+
+You are not responsible for any form of input or output.
+Your only task is to implement the Calculator class.
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+abstract class Arithmetic
+{
+  abstract int add(int x, int y);
+  abstract int subtract(int x, int y);
+  abstract int multiply(int x, int y);
+  abstract int divide(int x , int y);
+}
+
+//BODY STARTS HERE
+
+class Calculator extends Arithmetic{
+  
+        int add(int a,int b){
+            return (a+b);
+        }
+        int subtract(int a,int b){
+            return (a-b);
+        }
+        int multiply(int a,int b){
+            return (a*b);
+        }
+        int divide(int a,int b){
+            return (a/b);
+        }
+}
+//BODY ENDS HERE
+
+
+public class Solution{
+  public static void main(String args[])
+  {
+    Calculator cal = new Calculator();
+   	int A = 10, B = 5;
+   	System.out.println("Addition Result : " + cal.add(A, B));
+    System.out.println("Subtraction Result : " + cal.subtract(A, B));
+    System.out.println("Multiplication Result : " + cal.multiply(A, B));
+    System.out.println("Division Result : " + cal.divide(A, B));
+  }
+}
