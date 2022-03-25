@@ -503,3 +503,75 @@ public class Solution {
         System.out.println((int)k+1);
     }
 }
+
+
+
+Using inheritance, one class can acquire the properties of others. Consider the following HumanBeing class.
+
+class HumanBeing{
+    void eat(){
+        System.out.println("I am eating");
+    }
+}
+The class has only one method, eat. Next, we want to create another Teenager class that also has the beArrogant method. We can do this using the extends keyword :
+
+class Teenager extends HumanBeing {
+    void beArrogant() {
+        System.out.println("I am being arrogant");
+    }
+}
+Finally, we can create a Teenager object that can both eat and be arrogant at the same time.
+
+public class Solution{
+   public static void main(String[] args){
+
+      Teenager teen = new Teenager();
+      teen.eat();
+      teen.beArrogant();
+   }
+}
+The above code will print :
+
+I am eating
+I am being arrogant
+This means that a Teenager object has all the properties that a HumanBeing object has, as well as some additional unique properties.
+
+The code above is provided for you in your editor. You must add a reasonlessRebel method to the Teenager class, so that the code prints the following lines:
+
+I am eating
+I am being arrogant
+I am a rebel
+NOTE :
+Do not make any changes to the head or the tail of the code
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class HumanBeing{
+	void eat(){
+		System.out.println("I am eating");
+	}
+}
+
+//BODY OF THE CODE BEGINS HERE
+class Teenager extends HumanBeing{
+	void beArrogant(){
+		System.out.println("I am being arrogant");
+	}
+}
+//BODY OF THE CODE ENDS HERE
+
+
+public class Solution{
+
+   public static void main(String args[]){
+	  Teenager teen = new Teenager();
+	  teen.eat();
+	  teen.beArrogant();
+      teen.reasonlessRebel();
+   }
+}
