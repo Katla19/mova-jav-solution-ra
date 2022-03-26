@@ -1155,3 +1155,1012 @@ How does Collections.Sort() work?
 Internally the Sort method does call Compare method of the classes it is sorting. To compare two elements, it asks “Which is greater?” Compare method returns -1, 0 or 1 to say if it is less than, equal, or greater to the other. It uses this result to then determine if they should be swapped for its sort.
 
 Your task is to write a comparator class that takes as argument two objects of type Point and sorts them first by their Y-coordinate and breaks ties by X-coordinate.
+
+
+
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Point
+{
+    public int x;
+    public int y;
+    public Point(int _x, int _y)
+    {
+        x = _x;
+        y = _y;
+    }
+}
+
+//BODY STARTS HERE
+
+class sortByX implements Comparator<Point>
+{
+    public int compare(Point a,Point b){
+    if(a.y>b.y)
+    return 1;
+    else if(a.y==b.y&&a.x>b.x)
+    return 1;
+    else
+    return -1;
+    }
+}
+
+//BODY ENDS HERE
+
+public class Solution
+{
+    public static void main (String[] args)
+    {
+        // your code goes here
+        ArrayList<Point> ar = new ArrayList<Point>();
+        ar.add(new Point(1,1));
+        ar.add(new Point(1,2));
+        ar.add(new Point(2,2));
+        ar.add(new Point(2,1));
+        
+        Collections.sort(ar, new sortByX());
+        
+        for (int i = 0; i < 4; i++)
+        {
+            System.out.println(ar.get(i).x + " " + ar.get(i).y);
+        }
+    }
+}
+
+
+
+
+
+OO 06 - Method Overriding in Java
+Problem
+Submissions
+When a subclass inherits from a superclass, it also inherits its methods; however, it can also override the superclass methods (as well as declare and implement new ones). Consider the following Disney class:
+
+class DisneyCharacter{
+    String getName(){
+        return "Anonymous Disney Character";
+    }
+    String getPantsState(){
+        return "I may or may not be wearing pants";
+    }
+}
+Next we create a DonaldDuck class that inherits from the DisneyCharacter class. We can override the getName() function and return a different sub-class specific string.
+
+class DonaldDuck extends DisneyCharacter{
+    @Override
+    String getName(){
+        return "Donald Duck";
+    }
+}
+Note: When overriding a method, you should precede it with the @Override annotation. The parameter(s) and return type of an overridden method must be exactly the same as those of the method inherited from the supertype.
+
+Task :
+Complete the code in your editor by writing an overridden getPantsState method that returns a string just as the superclass' getPantsState method, except that it replaces with "I wear pants" or "I do not wear pants" based on the character.
+
+Your task is to make two character classes, DonaldDuck and MickeyMouse and have them two overridden methods each.
+
+Output Format :
+When executed your code must print the following :
+
+Anonymous Disney Character
+I may or may not be wearing pants
+DonaldDuck
+I do not wear pants
+MickeyMouse
+I wear pants
+
+
+
+
+
+import java.util.*;
+class DisneyCharacter{
+    String getName(){
+        return "Anonymous Disney Character";
+    }
+    String getPantsState(){
+        return "I may or may not be wearing pants";
+    }
+}
+class DonaldDuck extends DisneyCharacter{
+    @Override
+    String getName(){
+        return "DonaldDuck";
+    }
+    String getPantsState(){
+        return "I do not wear pants";
+    }
+}
+class MickeyMouse extends DisneyCharacter{
+    @Override
+    String getName(){
+        return "MickeyMouse";
+    }
+    String getPantsState(){
+        return "I wear pants";
+    }
+}
+
+
+
+public class Solution{
+    
+    public static void main(String []args){
+          DisneyCharacter c0 = new DisneyCharacter();
+        DonaldDuck c1 = new DonaldDuck();
+        MickeyMouse c2 = new MickeyMouse();
+        System.out.println(c0.getName());
+        System.out.println(c0.getPantsState());
+        System.out.println(c1.getName());
+        System.out.println(c1.getPantsState());
+        System.out.println(c2.getName());
+        System.out.println(c2.getPantsState());
+    }
+}
+
+
+
+OO 07 - The Super Keyword
+Problem
+Submissions
+When a method in a subclass overrides a method in superclass, it is still possible to call the overridden method using super keyword. If you write super.func() to call the function func(), it will call the method that was defined in the superclass.
+
+You are given a partially completed code in the editor. Modify the code so that the code prints the following text:
+
+Hello I am a motorcycle, I am a cycle with an engine.
+My ancestor is a cycle who is a vehicle with pedals.
+
+
+import java.util.*;
+import java.io.*;
+
+class BiCycle{
+    String define_me(){
+        return "a vehicle with pedals.";
+    }
+}
+
+class MotorCycle extends BiCycle{
+    String define_me(){
+        return "a cycle with an engine.";
+    }
+    
+    MotorCycle(){
+        System.out.println("Hello I am a motorcycle, I am "+ define_me());
+
+        String temp=super.define_me(); //Fix this line
+        System.out.println("My ancestor is a cycle who is "+ temp );
+    }
+    
+}
+class Solution{
+    public static void main(String []args){
+        MotorCycle M=new MotorCycle();
+    }
+}
+
+
+
+OO 08 - InstanceOf Keyword
+Problem
+Submissions
+The Java instanceof operator is used to test if the object or instance is an instanceof the specified type.
+
+In this problem we have given you three classes in the editor:
+
+Student Class
+
+Rockstar Class
+
+Hacker Class
+
+In the main method, we populated an ArrayList with several instances of these classes. count method calculates how many instances of each type is present in the ArrayList. The code prints three integers, the number of instance of Student class, the number of instance of Rockstar class, the number of instance of Hacker class.
+
+But some lines of the code are missing, and you have to fix it by modifying only lines! Don't add, delete or modify any extra line.
+
+To restore the original code in the editor, click on the top left icon in the editor and create a new buffer.
+
+Sample Input 0
+
+5
+Student
+Student
+Rockstar
+Student
+Hacker
+Sample Output 0
+
+3 1 1
+
+
+
+import java.util.*;
+
+
+class Student{}
+class Rockstar{}
+class Hacker{}
+
+
+public class InstanceOFTutorial{
+   
+   static String count(ArrayList mylist){
+      int a = 0,b = 0,c = 0;
+      for(int i = 0; i < mylist.size(); i++){
+         Object element=mylist.get(i);
+         if(element instanceof Student)
+            a++;
+         if(element instanceof Rockstar)
+            b++;
+         if(element instanceof Hacker)
+            c++;
+      }
+      String ret = Integer.toString(a)+" "+ Integer.toString(b)+" "+ Integer.toString(c);
+      return ret;
+   }
+
+   public static void main(String []args){
+      ArrayList mylist = new ArrayList();
+      Scanner sc = new Scanner(System.in);
+      int t = sc.nextInt();
+      for(int i=0; i<t; i++){
+         String s=sc.next();
+         if(s.equals("Student"))mylist.add(new Student());
+         if(s.equals("Rockstar"))mylist.add(new Rockstar());
+         if(s.equals("Hacker"))mylist.add(new Hacker());
+      }
+      System.out.println(count(mylist));
+   }
+}
+
+
+
+OO 09 - Iterator in Java
+Problem
+Submissions
+Java Iterator class can help you to iterate through every element in a collection. Here is a simple example:
+
+import java.util.*;
+public class Example{
+
+    public static void main(String []args){
+        ArrayList mylist = new ArrayList();
+        mylist.add("Hello");
+        mylist.add("Java");
+        mylist.add("4");
+        Iterator it = mylist.iterator();
+        while(it.hasNext()){
+            Object element = it.next();
+            System.out.println((String)element);
+        }
+    }
+}
+In this problem you need to complete a method func. The method takes an ArrayList as input. In that ArrayList there is one or more integer numbers, then there is a special string "###", after that there are one or more other strings. A sample ArrayList may look like this:
+
+element[0]=>42
+element[1]=>10
+element[2]=>"###"
+element[3]=>"Hello"
+element[4]=>"Java"
+You have to modify the func method by editing at most 2 lines so that the code only prints the elements after the special string "###". For the sample above the output will be:
+
+Hello
+Java
+Note: The stdin doesn't contain the string "###", it is added in the main method.
+
+To restore the original code in the editor, click the top left icon on the editor and create a new buffer.
+
+
+
+import java.util.*;
+public class Main{
+   
+   static Iterator func(ArrayList mylist){
+      Iterator it=mylist.iterator();
+      while(it.hasNext()){
+         Object element = it.next();
+         if(element instanceof String)//Hints: use instanceof operator
+            break;
+      }
+      return it;
+      
+   }
+   @SuppressWarnings({ "unchecked" })
+   public static void main(String []args){
+      ArrayList mylist = new ArrayList();
+      Scanner sc = new Scanner(System.in);
+      int n = sc.nextInt();
+      int m = sc.nextInt();
+      for(int i = 0;i<n;i++){
+         mylist.add(sc.nextInt());
+      }
+      
+      mylist.add("###");
+      for(int i=0;i<m;i++){
+         mylist.add(sc.next());
+      }
+      
+      Iterator it=func(mylist);
+      while(it.hasNext()){
+         Object element = it.next();
+         System.out.println((String)element);
+      }
+   }
+}
+
+
+Z 403 Sum of all Digits
+Problem
+Submissions
+You are given an integer I in the following format :
+You are given two integers P and Q.
+Integer I can be obtained by appending Q instances of P together.
+For example, if P = 619 and Q = 4, then I = 619619619619.
+
+Your task is, given P and Q find the sum of all the digits of I.
+That sounds too simple, so lets take it up a notch.
+Lets say the sum of all digits is S, then run the following pseudocode :
+
+int SumOfDigits(S) :
+	K <- Sum of Digits of S
+    if K is a single digit number, return K
+    else return SumOfDigits(K)
+INPUT
+Input consist of two numbers P and Q separated by a space.
+
+OUTPUT
+Print a single digit, the final digit when the numbers of I are continuously added.
+
+CONSTRAINTS
+1 ≤ P ≤ 10100000
+**1 ≤ Q ≤ **105
+
+Sample Input 0
+
+148 3
+Sample Output 0
+
+3
+
+
+
+
+Language: Python 3
+def sup_digits(x,k):
+    a = digsum(x)
+    return sup_digit(str(int(a)*k))
+
+def sup_digit(x):
+    if len(x) <= 1:
+        return x
+    else:
+        return sup_digit( digsum(x) )
+
+def digsum(x):
+    return str(sum((int(i) for i in list(x))))
+
+
+n, k = input().split()
+print( sup_digits(n, int(k)))
+
+
+
+
+
+
+I M05 - Minimize Waste Cells
+Problem
+Submissions
+Previously, it was important for every company to have a motto.
+
+Now, it is important for every company to have a banner.
+
+Since companies want to save their resources, they decided to convert their motto into a banner.
+
+How this works is, you create a square matrix of size N x N, and fill in the elements of this matrix using the motto in row-major order.
+
+The remaining spaces in the matrix are called waste cells and are to be represented as '?'.
+
+You have to choose N in such a way that the number of waste cells is minimized.
+
+Input
+Input consists of one line only, containing the company motto
+
+Output
+Output must consist of the matrix formed from the input string
+
+Notes
+The length of the input string will not exceed 1000
+
+Sample Input 0
+
+nike - just do it!
+Sample Output 0
+
+nike 
+- jus
+t do 
+it!??
+?????
+Sample Input 1
+
+oneplus - never settle!
+Sample Output 1
+
+onepl
+us - 
+never
+ sett
+le!??
+
+
+Python 3
+def function(st, k):
+    a = len(st)+1
+    for i in range(a,(k*k)+1):
+        st = st[:i] + "?" + st[i:]
+    for i in range(len(st)): 
+        if i%k == 0: 
+            sub = st[i:i+k] 
+            lst = []
+            for j in sub:
+                lst.append(j)
+            print(''.join(lst))
+            
+s = input()
+length = len(s)
+if(length == 1):
+    print(s)
+else:
+    if(length == 2):
+        s = s[:3]+"?"+s[3:]
+        length = len(s)
+    for i in range(2,length):
+        if ( (i*i) >= length):
+            jen = i
+            break
+    function(s, jen)
+
+
+
+
+B D05 - Consecutive Prime Sum
+Problem
+Submissions
+Some prime numbers can be expressed as Sum of other consecutive prime numbers.
+
+For example
+
+5 = 2 + 3
+17 = 2 + 3 + 5 + 7
+41 = 2 + 3 + 5 + 7 + 11 + 13
+
+Your task is to find out how many prime numbers which satisfy this property are present in the range 3 to N subject to a constraint that summation should always start with number 2.
+
+Write code to find out number of prime numbers that satisfy the above mentioned property in a given range.
+
+Input Format:
+Each test case contains a number N <= 1000000000
+
+Output Format:
+Print the total number of all such prime numbers which are less than or equal to N.
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    public static boolean isPrime(int n)
+    {
+        if(n==2)
+            return true;
+        if(n%2==0)
+            return false;
+        for(int i=3;i<=Math.sqrt(n);i++)
+        {
+            if(n%i==0)
+                return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k=3;
+        int sum=2;
+        int count=0;
+            while(true)
+            {
+                if(isPrime(k))
+                {
+                    sum=sum+k;
+                    if(sum>=n)
+                        break;
+                    if(isPrime(sum))
+                        count++;
+                }
+                k++;
+            }
+        System.out.println(count);
+    }
+}
+
+
+
+Z 401 The Permutation Problem
+Problem
+Submissions
+You are given an array of N integers which is a permutation of the first N natural numbers. You can swap any two elements of the array. You can make at most K swaps. What is the largest permutation, in numerical order, you can make?
+
+Input Format
+
+The first line of the input contains two integers, N and K, the size of the input array and the maximum swaps you can make, respectively. The second line of the input contains a permutation of the first N natural numbers.
+
+Constraints
+
+1≤N≤10^5 1≤K≤10^9
+
+Output Format
+
+Print the lexicographically largest permutation you can make with at most K swaps
+
+Sample Input 0
+
+5 1
+4 2 3 5 1
+Sample Output 0
+
+5 2 3 4 1
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        //int p=0;
+        if(k>n){
+            k=n;
+        }
+        for(int i=0;i<k;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]<arr[j]){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+
+
+I M11 - Special Chemical Element
+Problem
+Submissions
+Toyland unlike Earth has only 26 chemical elements known as of now. Each element is identified as a lowercase English letter in range ‘a’ - ‘z’. Every chemical compound is composed of these given chemical elements only. A chemical element is special if it is present in all the given compounds.
+
+You are given a list of N chemical compounds. Print the number of special chemical elements.
+
+Input Format
+
+First line represent the integer N, number of chemical compounds. Next N lines contains chemical composition of each of the compound, consisting of lowercase english letter (‘a’ - ‘z’).
+
+Constraints
+
+1 ≤ N ≤ 100 1 ≤ length of composition of chemical compound ≤ 100
+
+Output Format
+
+Print the number of special chemical elements
+
+Sample Input 0
+
+4
+abbbc
+xbady
+bghla 
+aba
+Sample Output 0
+
+2
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.lang.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int c2=0,c1=0;
+        String a[]=new String[n];
+        for(int i=0;i<n;i++) a[i]=sc.next();
+        for(char c='a';c<='z';c++){
+            c1=0;
+            for(String s:a){
+                //System.out.print(s);
+                if(s.contains(Character.toString(c))) c1++;
+                    
+            }
+            if(c1==n)c2++;
+        }
+        System.out.print(c2);
+        
+    }
+}
+
+
+Mystery of the Repeated Number
+Problem
+Submissions
+Given an array consisting of n elements, every element except one occurs only once. Find out the element that occurs more than once.
+
+Input Format
+
+First line contains the number N, denoting the size of the array. Next line contains N integers, the array a[N].
+
+Constraints
+
+1 <= N <= 10000
+1 <= a[i] <= 10000
+
+It is guaranteed that all elements but one occur only once and exactly one element is repeated, i.e. it occurs twice. Print this repeated number.
+
+Output Format
+
+Print one number, which occurs twice in the array.
+
+Sample Input 0
+
+5
+2 6 5 4 2
+Sample Output 0
+
+2
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]==arr[j]){
+                    System.out.println(arr[i]);
+                    return ;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+T 104 : Make Palindrome By Reversing
+Problem
+Submissions
+Write a code that does the following :
+
+iterations = 0
+number = input()
+while iterations < 5:
+    number = number + number.reverse()
+    if number is palindrome : 
+        print number
+        print "YES"
+    iterations++;
+print "NO"
+Input Format
+
+One number N.
+
+Constraints
+
+1 <= N <= 10^5
+
+Output Format
+
+One number, the final palindrome if possible then YES. If not possible then only a NO.
+
+Sample Input 0
+
+32
+Sample Output 0
+
+55
+YES
+Explanation 0
+
+32 + 23 = 55 which is a palindrome
+
+Sample Input 1
+
+39
+Sample Output 1
+
+363
+YES
+Explanation 1
+
+39 + 93 = 132 132 + 231 = 363 which is a palindrome
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    public static int palindrome(int num){
+        int temp=num;
+        int val=0;
+        while(temp!=0){
+                int r=temp%10;
+                val=val*10+r;
+                temp=temp/10;
+            }
+        return num+val;
+    }
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        int i=0;
+        int v=0;
+        int count=0;
+        while(i<5){
+            num=palindrome(num);
+            int temp=num;
+            int value=0;
+            while(temp!=0){
+                int r=temp%10;
+                value=value*10+r;
+                temp=temp/10;
+            }
+            if(value==num){
+                count=1;
+                v=num;
+                break;
+            }
+            i++;
+        }
+        if(count==1){
+            System.out.println(v);
+            System.out.println("YES");
+        }
+        else{
+            System.out.println("NO");
+        }
+    }
+}
+
+
+
+Z 414 Minimum Number Function  /*Google Search question*/
+
+Python 3
+
+
+n = int(input())
+ans = "int"
+for i in range(n-1):
+    ans = "min(int, " + ans + ")"
+print(ans)
+
+
+F M05 - Happy Sighting
+Problem
+Submissions
+There are n pictures delivered for the new exhibition. The i-th painting has beauty ai. We know that a visitor becomes happy every time he passes from a painting to a more beautiful one.
+
+We are allowed to arranged pictures in any order. What is the maximum possible number of times the visitor may become happy while passing all pictures from first to last. In other words, we are allowed to rearrange elements of array a in any order. What is the maximum possible number of indices i (1 <= i <= n - 1), such that ai + 1 > ai.
+
+Input Format
+
+The first line of the input contains integer n — the number of painting.
+
+The second line contains the sequence a1, a2, ..., an, where ai means the beauty of the i-th painting.
+
+Constraints
+
+1 <= n <= 1000
+1 <= ai <= 1000
+
+Output Format
+
+Print one integer — the maximum possible number of neighbouring pairs, such that ai + 1 > ai, after the optimal rearrangement.
+
+Sample Input 0
+
+4
+200 100 100 200
+Sample Output 0
+
+2
+Explanation 0
+
+Sample Ordering that gives answer 2 :
+
+100 200 100 200
+
+C++
+
+#include <iostream>
+#include <string.h>
+#include <stdlib.h>
+#include <algorithm>
+#include <math.h>
+#include <stdio.h>
+
+using namespace std;
+int a[1005];
+int b[1005];
+int tag[1005];
+int tag2[1005];
+int num[1005];
+int n;
+int main()
+{
+    scanf("%d",&n);
+    memset(tag2,0,sizeof(tag2));
+    int cnt=0;
+    for(int i=1;i<=n;i++)
+    {
+        scanf("%d",&a[i]);
+        if(!tag2[a[i]])
+        {
+            tag2[a[i]]=1;
+            b[++cnt]=a[i];
+        }
+    }
+    sort(b+1,b+cnt+1);
+    for(int i=1;i<=cnt;i++)
+        tag[b[i]]=i;
+    memset(num,0,sizeof(num));
+    for(int i=1;i<=n;i++)
+        num[tag[a[i]]]++;
+    int ans=0;
+    for(int i=1;i<=cnt;i++)
+    {
+        for(int j=i-1;j>=1;j--)
+        {
+                if(num[j]<=num[i])
+                {
+                    ans+=num[j];
+                    num[j]=0;
+                    num[i]-=num[j];
+                }
+                else
+                {
+                    ans+=num[i];
+                    num[i]=0;
+                    num[j]-=num[i];
+
+                }
+        }
+
+    }
+    printf("%d",ans);
+    return 0;
+
+}
+
+
+
+
+Farmers and Cows
+Problem
+Submissions
+In a village,there are n farmers. Each farmer has a certain number of cows. You have to find the number of triplets of farmers such that the number of cows of one farmer is the sum of the cows of other two farmers.
+
+Input Format
+
+Input contains n followed by n space separeted integers.
+Output should contain the number of triplets.
+
+Constraints
+
+1 <= n <= 5000
+1 <= a[i] <= 10^9
+It is guaranteed that no two farmers have the same no. of cows.
+
+Output Format
+
+Output the number of satisfying triplets.
+
+Sample Input 0
+
+5
+1 2 3 4 5
+Sample Output 0
+
+4
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int count=0;
+        
+        Arrays.sort(arr);
+        for(int i=0;i<n-1;i++){
+            int sum=0;
+            for(int p=i+1;p<n;p++){
+                sum=arr[i]+arr[p];
+                if(Arrays.binarySearch(arr,sum)>=0){
+                    count++;
+                }
+            }
+        }
+            
+        System.out.println(count);
+    }
+}
+
+
+
+
+
