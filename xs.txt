@@ -244,7 +244,35 @@ public class Solution {
 }
 
 
+Super Prime Number
+Problem
+Submissions
+Hi! Itsa Me! aMario! While plumping my way through the town looking for my princess, I talked to a duck that told me about prime numbers. Apparently a prime number is a number that only has two divisors, i.e. 1 and itself. Interesting isnt it? Being the Super Mario that I am, I decided to come up with the concept of a super prime number. Formally, a super prime number is a number sum of all of whose divisors except itself is prime i.e. sum of every divisor of a number except itself being prime makes the number a super prime number. I have Q queries regarding super prime numbers. Each query is a number and I need to know if the number is super prime or not. Can you help me?
 
+Input Format
+
+First line contains the number of queries Q.
+Next Q lines contain one integer each denoting the numbers associated with the queries.
+
+Constraints
+
+1 <= Q <= 10^5
+1 <= queries <= 10^5
+
+Output Format
+
+For every query print YES if the number is a super prime number and print NO otherwise. Output must contain Q lines, each line containing the answer to one query.
+
+Sample Input 0
+
+4
+4 5 9 8
+Sample Output 0
+
+YES
+NO
+NO
+YES
 
 
 
@@ -315,6 +343,34 @@ public class Solution {
 
 
 
+T 131 - Confused Integer
+Problem
+Submissions
+Our beloved integer X is confused. He was told that he is a positive integer which fits in a 32 bit signed integer that can be expressed as A^P where P > 1 and A > 0 where A and P both should be integers. Now he wonders, there is a possibility that he does not exist at all because he does not satisfy the A^P expressibility condition. Given the values of A and P, find out if X exists or not.
+
+Input Format
+
+Input contains the value of integer X.
+
+Constraints
+
+0 < X < 2x10^9
+
+Output Format
+
+Output "yes" if X can be expressed as A^P and "no" otherwise.
+
+Sample Input 0
+
+4
+Sample Output 0
+
+yes
+Explanation 0
+
+Yes as 2^2 = 4
+
+
 
 import java.io.*;
 import java.util.*;
@@ -347,6 +403,51 @@ public class Solution {
 
 
 
+
+G M04 - The Elite N
+Problem
+Submissions
+The Elite N are a number of people in a line, that you have to beat in order to be the Pokémon Champion.
+Each person has exactly one Pokémon, with a predetermined power level.
+When a battle occurs, the powers of both Pokémon steadily decrease until either reaches 0. This will be referred to as fainting.
+You have to make sure your Pokémon doesn't faint, i.e., its power should remain > 0
+You can take rest and restore your Pokémon to full power to start battling again. But it takes one day to do so.
+When you rest the current opponent also takes a rest restoring his powers to full.
+You can fight as many battles as possible in a day until you rest.
+Find the number of days you will need to defeat the Elite N and become the champion.
+Note that there might be a person stronger than you whom you cannot defeat. Hence you will have to lose.
+Print the number of days required to defeat the Elite N, and -1 if you can't.
+Input Format
+
+The first line of input contains your Pokémon's power, K. The second line contains the number of opponents, N. The next line contains n numbers A1, A2 ... An, where Ai is the power of the ith opponent.
+
+Constraints
+
+1 <= k <= 1000
+
+1 <= n <= 100000
+
+1 <= a1, a2, a3, ..., an <= 1000
+
+Output Format
+
+Output only one number, the number of days taken to defeat the Elite N.
+
+Sample Input
+
+10
+
+7
+
+1 2 4 7 2 5 5
+
+Sample Output
+
+4
+
+Explanation
+
+On the first day you defeat 1st, 2nd and 3rd opponent. As the remaining power would be 3, you can't battle the 4th one. So you take rest. On the 2nd day, you defeat the 4th and the 5th opponent, then take rest. On the 3rd day, you defeat the 6th enemy only. As you cannot let your pokemon faint, you will have to take rest. On the 4th day you defeat the last of the Elite N and become the champion! :D
 
 
 
@@ -390,9 +491,67 @@ public class Solution {
 
 
 
+B D01 - Find The Coders DayB D01
+Day of the Programmer
+Marie invented a Time Machine and wants to test it by time-traveling to visit Russia on the Day of the Programmer (the 256th day of the year) during a year in the inclusive range from 1700 to 2700.
 
+From 1700 to 1917, Russia's official calendar was the Julian calendar; since 1919 they used the Gregorian calendar system. The transition from the Julian to Gregorian calendar system occurred in 1918, when the next day after January 31st was February 14th. This means that in 1918, February 14th was the 32nd day of the year in Russia.
 
+In both calendar systems, February is the only month with a variable amount of days; it has 29 days during a leap year, and 28 days during all other years. In the Julian calendar, leap years are divisible by 4; in the Gregorian calendar, leap years are either of the following:
 
+Divisible by 400.
+Divisible by 4 and not divisible by 100.
+Given a year, , find the date of the 256th day of that year according to the official Russian calendar during that year. Then print it in the format dd.mm.yyyy, where dd is the two-digit day, mm is the two-digit month, and yyyy is .
+
+For example, the given  = 1984. 1984 is divisible by 4, so it is a leap year. The 256th day of a leap year after 1918 is September 12, so the answer is .
+
+Function Description
+
+Complete the dayOfProgrammer function in the editor below. It should return a string representing the date of the 256th day of the year given.
+
+dayOfProgrammer has the following parameter(s):
+
+year: an integer
+Input Format
+
+A single integer denoting year .
+
+Constraints
+
+1700 \le y \le 2700
+Output Format
+
+Print the full date of Day of the Programmer during year  in the format dd.mm.yyyy, where dd is the two-digit day, mm is the two-digit month, and yyyy is .
+
+Sample Input 0
+
+2017
+Sample Output 0
+
+13.09.2017
+Explanation 0
+
+In the year  = 2017, January has 31 days, February has 28 days, March has 31 days, April has 30 days, May has 31 days, June has 30 days, July has 31 days, and August has 31 days. When we sum the total number of days in the first eight months, we get 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 = 243. Day of the Programmer is the 256th day, so then calculate 256 - 243 = 13 to determine that it falls on day 13 of the 9th month (September). We then print the full date in the specified format, which is 13.09.2017.
+
+Sample Input 1
+
+2016
+Sample Output 1
+
+12.09.2016
+Explanation 1
+
+Year  = 2016 is a leap year, so February has 29 days but all the other months have the same number of days as in 2017. When we sum the total number of days in the first eight months, we get 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 = 244. Day of the Programmer is the 256th day, so then calculate 256 - 244 = 12 to determine that it falls on day 12 of the 9th month (September). We then print the full date in the specified format, which is 12.09.2016.
+
+Sample Input 2
+
+1800
+Sample Output 2
+
+12.09.1800
+Explanation 2
+
+Since 1800 is leap year as per Julian calendar. Day lies on 12 September.
 
 import java.io.*;
 import java.util.*;
@@ -434,7 +593,40 @@ public class Solution {
 
 
 
+C D09 - To and Fro
+Problem
+Submissions
+A futuristic company is building an autonomous car. The scientists at the company are training the car to perform Reverse parking. To park, the car needs to be able to move in backward as well as forward direction. The car is programmed to move backwards B meters and forwards again, say F meters, in a straight line. The car does this repeatedly until it is able to park or collides with other objects. The car covers 1 meter in T units of time. There is a wall after distance D from car's initial position in the backward direction.
 
+The car is currently not without defects and hence often hits the wall. The scientists are devising a strategy to prevent this from happening. Your task is to help the scientists by providing them with exact information on amount of time available before the car hits the wall.
+
+Input Format:
+
+First line contains total number of test cases, denoted by N Next N lines, contain a tuple containing 4 values delimited by space F B T D, where 1. F denotes forward displacement in meters 2. B denotes backward displacement in meters 3. T denotes time taken to cover 1 meter 4. D denotes distance from Car's starting position and the wall in backward direction
+
+Output Format:
+
+For each test case print time taken by the Car to hit the wall
+
+Constraints:
+First move will always be in backward direction
+1 <= N <= 100
+backward displacement > forward displacement i.e. (B > F)
+forward displacement (F) > 0
+backward displacement (B) > 0
+time (T) > 0
+distance (D) > 0
+All input values must be positive integers only
+
+Sample Input 0
+
+2
+6 9 3 18
+3 7 5 20
+Sample Output 0
+
+162
+220
 
 
 
@@ -471,7 +663,33 @@ public class Solution {
 
 
 
+Identify and print the following pattern generated by prime numbers for a given N.
 
+N = 1
+2
+
+N = 2
+2
+3 5
+
+N = 3
+2
+3 5
+7 11 13
+Input
+Input consists of a single integer N
+
+Output
+Output must consists of the pattern as shown above.
+
+Sample Input 0
+
+3
+Sample Output 0
+
+2
+3 5
+7 11 13
 
 
 
